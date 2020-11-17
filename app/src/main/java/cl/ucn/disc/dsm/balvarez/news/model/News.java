@@ -18,7 +18,7 @@
  */
 package cl.ucn.disc.dsm.balvarez.news.model;
 
-import java.time.ZonedDateTime;
+import org.threeten.bp.ZonedDateTime;
 
 /**
  * The Domain model: News
