@@ -18,39 +18,61 @@
  */
 package cl.ucn.disc.dsm.balvarez.news.services;
 
+import com.github.javafaker.Faker;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import cl.ucn.disc.dsm.balvarez.news.model.News;
 
 /**
- * @author Beatriz Alvarez-Rojas.
+ * Testing of ContractsImpl
+ * @author Beatriz Alvarez-Rojas
  */
-public class ContractsImpl implements Contracts {
+public class TestContractsImplFaker {
+    /**
+     * The logger.
+     */
+    private static final Logger log = LoggerFactory.getLogger(TestContractsImplFaker.class);
 
     /**
-     * the Logger.
+     * The Test of retrieve News.
      */
+    @Test
+    public void testRetrieveNews(){
+        log.debug("Testing... ");
+        //The implementation.
+        Contracts contracts = new ContractsImplFaker();
 
-    private static final Logger log = LoggerFactory.getLogger(ContractsImpl.class);
+        //call the method.
+        List<News> news = contracts.retrieveNews(5);
+        Assertions.assertNotNull(news, " List was null! :c ");
+        Assertions.assertTrue(news.size() != 0, "Empty list ? :c! ");
+        Assertions.assertTrue( news.size() == 5, " List size != 5 :c" );
+        log.debug("Done!");
 
-    /**
-     * The list of news.
-     */
-    @Override
-    public List<News> retrieveNews(Integer size) {
-        //The list of news
-        final List<News> news = new ArrayList<>();
-
-        // TODO: add the faker news to the list
-        return news;
     }
 
-    @Override
-    public void saveNews(News news) {
+    /**
+     * Show the faker
+     */
+    @Test
+    public void testFaker(){
+
+        // Build the Faker
+        Faker faker = Faker.instance();
+
+        for(int i = 0; i<5; i++){
+
+            log.debug("Name{}" , faker.name().fullName());
+            //FIXME: remover
+            System.out.println("Name:" + faker.name().fullName());
+
+        }
 
     }
 }

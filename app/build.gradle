@@ -46,7 +46,6 @@ dependencies {
     implementation 'org.slf4j:slf4j-simple:1.7.30'
 
     //JavaFaker
-
-    testImplementation 'com.github.javafaker:javafaker:1.0.2'
+    implementation 'com.github.javafaker:javafaker:1.0.2'
 
 }
