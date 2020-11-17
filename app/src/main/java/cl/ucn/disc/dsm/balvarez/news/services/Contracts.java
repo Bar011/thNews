@@ -18,6 +18,7 @@
  */
 package cl.ucn.disc.dsm.balvarez.news.services;
 import java.util.List;
+
 import cl.ucn.disc.dsm.balvarez.news.model.News;
 
 /**
@@ -33,4 +34,10 @@ public interface Contracts {
      */
     List<News> retrieveNews(Integer size);
 
+    /**
+     * Save one news into the System
+     * @param news to save
+     */
+
+        void saveNews(News news);
 }
