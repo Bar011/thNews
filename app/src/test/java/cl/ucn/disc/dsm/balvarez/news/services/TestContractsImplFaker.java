@@ -22,6 +22,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.threeten.bp.ZonedDateTime;
 
 import java.util.List;
 
@@ -48,6 +49,7 @@ public class TestContractsImplFaker {
 
         //call the method.
         List<News> news = contracts.retrieveNews(5);
+        Assertions.assertNotNull(news);
         Assertions.assertNotNull(news, " List was null! :c ");
         Assertions.assertFalse(news.isEmpty(), "Empty list ? :c! ");
         Assertions.assertEquals( 5,news.size(), " List size != 5 :c" );
@@ -56,15 +58,37 @@ public class TestContractsImplFaker {
         for(News n : news){
             log.debug("News{}", n);
         }
-
+        Assertions.assertNotNull(news);
         //size = 0
         Assertions.assertEquals(0,contracts.retrieveNews(0).size(), "List != 0");
         //size = 3
         Assertions.assertEquals(3,contracts.retrieveNews(3).size(), "List != 3");
         //size = 10
         Assertions.assertTrue(contracts.retrieveNews(10).size() <= 10,  "List != 10");
+
         log.debug("Done!");
 
     }
+    @Test
+    public void testSaveNews(){
+        log.debug("Testing .. ");
 
+        // The concrete implementation
+        Contracts contracts = new ContractsImplFaker();
+
+        // Create a news
+        News news = new News((long) 01,
+                        "title",
+                        "ucn",
+                        "Beatriz",
+                        "www.noticia.com",
+                        "",
+                        "New noticia",
+                        "This new",
+                        ZonedDateTime.now());
+
+
+        // Save the news
+        contracts.saveNews(news);
+    }
         }
