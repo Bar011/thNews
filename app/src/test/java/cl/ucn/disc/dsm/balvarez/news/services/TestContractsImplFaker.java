@@ -22,6 +22,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.threeten.bp.Clock;
 import org.threeten.bp.ZonedDateTime;
 
 import java.util.List;
@@ -77,15 +78,7 @@ public class TestContractsImplFaker {
         Contracts contracts = new ContractsImplFaker();
 
         // Create a news
-        News news = new News((long) 01,
-                        "title",
-                        "ucn",
-                        "Beatriz",
-                        "www.noticia.com",
-                        "",
-                        "New noticia",
-                        "This new",
-                        ZonedDateTime.now());
+        News news = new News((long) 01,"A","S","Autor", "","","aa","aa" , ZonedDateTime.now(Clock.systemUTC()));
 
 
         // Save the news
