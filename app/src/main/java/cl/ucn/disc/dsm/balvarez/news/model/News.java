@@ -18,13 +18,19 @@
  */
 package cl.ucn.disc.dsm.balvarez.news.model;
 
+import net.openhft.hashing.LongHashFunction;
+
 import org.threeten.bp.ZonedDateTime;
+
+import cl.ucn.disc.dsm.balvarez.news.utils.Validation;
+
 
 /**
  * The Domain model: News
  * @author Beatriz Alvarez-Rojas
  */
 public final class News {
+
     /**
      * Unique id
      */
@@ -44,19 +50,16 @@ public final class News {
     /**
      * The Autor.
      */
-
     private String author;
 
     /**
      * The URL.
      */
-
     private String url;
 
     /**
-     *The URL of image.
+     * The URL of image.
      */
-
     private String urlImage;
 
     /**
@@ -67,18 +70,16 @@ public final class News {
     /**
      * The Content.
      */
-
     private String content;
 
     /**
      * The Date of publish.
      */
-
-    private ZonedDateTime publishedAt;
+    public ZonedDateTime publishedAt;
 
     /**
      * The Constructor.
-     * @param id
+     *
      * @param title
      * @param source
      * @param author
@@ -88,23 +89,42 @@ public final class News {
      * @param content
      * @param publishedAt
      */
-    public News(Long id, String title, String source, String author, String url, String urlImage, String description, String content, ZonedDateTime publishedAt) {
-        this.id = id;
-        this.title = title;
-        this.source = source;
-        this.author = author;
-        this.url = url;
-        this.urlImage = urlImage;
-        this.description = description;
-        this.content = content;
-        this.publishedAt = publishedAt;
+    public News(String title, String source, String author, String url, String urlImage, String description, String content, ZonedDateTime publishedAt)
+    {
+        //Validation title
+        Validation.minSize(title,2,"title");
+        this.title =title;
+
+        //Validation source
+        Validation.minSize(source,2,"source");
+        this.source =source;
+
+        // Validation of author
+        Validation.minSize(author,2,"author");
+        this.author =author;
+
+        // Apply the hash xxHash function
+        this.id = LongHashFunction.xx().
+
+                hashChars(title +"|"+source+"|"+author);
+
+        this.url =url;
+        this.urlImage =urlImage;
+        this.description =description;
+
+        //Validation of content
+        Validation.notNull(content,"content");
+        this.content =content;
+
+        //Validation of publishedAt
+        Validation.notNull(publishedAt,"publishedAt");
+        this.publishedAt =publishedAt;
     }
 
     /**
      *
      * @return the id.
      */
-
     public Long getId() {
         return id;
     }
@@ -172,4 +192,5 @@ public final class News {
     public ZonedDateTime getPublishedAt() {
         return publishedAt;
     }
+
 }
