@@ -33,6 +33,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
     //Google Stuff
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.2.1'
@@ -47,5 +48,20 @@ dependencies {
 
     //JavaFaker
     implementation 'com.github.javafaker:javafaker:1.0.2'
+
+    // Apache commons lang
+    implementation "org.apache.commons:commons-lang3:3.11"
+
+    // NewsAPI
+    implementation "com.github.KwabenBerko:News-API-Java:1.0.0"
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.okio:okio:2.9.0"
+    implementation "com.google.code.gson:gson:2.8.6"
+    implementation "com.squareup.okhttp3:okhttp:4.9.0"
+
+
+    // Hashing libraries: https://github.com/OpenHTF/Zero-Allocation-Hashing
+    implementation 'net.openhft:zero-allocation-hashing:0.12'
 
 }
