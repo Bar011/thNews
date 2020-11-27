@@ -42,7 +42,6 @@ public class ContractsImplFaker implements Contracts {
     /**
      * the Logger.
      */
-
     private static final Logger log = LoggerFactory.getLogger(ContractsImplFaker.class);
 
     /**
@@ -59,9 +58,9 @@ public class ContractsImplFaker implements Contracts {
         final Faker faker = Faker.instance();
 
         for(int i  = 0; i < 5; i++){
-
+            //
             this.theNews.add(new News(
-                    Integer.toUnsignedLong(i),
+
                     faker.book().title(),
                     faker.name().username(),
                     faker.name().fullName(),
@@ -100,4 +99,5 @@ public class ContractsImplFaker implements Contracts {
         //FIXME: don't allow duplicated!!
     this.theNews.add(news);
     }
+
 }
