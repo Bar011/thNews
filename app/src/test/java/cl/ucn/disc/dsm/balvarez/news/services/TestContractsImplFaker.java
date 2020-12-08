@@ -78,7 +78,7 @@ public class TestContractsImplFaker {
         Contracts contracts = new ContractsImplFaker();
 
         // Create a news
-        News news = new News("A","S","Autor", "","","aa","aa" , ZonedDateTime.now(Clock.systemUTC()));
+        News news = new News("Noticia","Fuente","Autor", "","","aa","aa" , ZonedDateTime.now(Clock.systemUTC()));
 
         // Save the news
         contracts.saveNews(news);
