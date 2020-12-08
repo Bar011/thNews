@@ -64,4 +64,12 @@ dependencies {
     // Hashing libraries: https://github.com/OpenHTF/Zero-Allocation-Hashing
     implementation 'net.openhft:zero-allocation-hashing:0.12'
 
+    // LeakCanary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
+
+    // ACRA
+    def acraVersion = '5.7.0'
+    implementation "ch.acra:acra-http:$acraVersion"
+    implementation "ch.acra:acra-dialog:$acraVersion"
+
 }
