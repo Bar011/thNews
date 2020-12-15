@@ -11,8 +11,12 @@ package cl.ucn.disc.dsm.balvarez.news.activities;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +40,11 @@ public final class MainActivity extends AppCompatActivity {
      * The Logger.
      */
     private static final Logger log = LoggerFactory.getLogger(MainActivity.class);
+
+    /**
+     *List view.
+     */
+    protected ListView listView;
 
     /**
      *On create.
@@ -77,6 +86,44 @@ public final class MainActivity extends AppCompatActivity {
 
 
         }
+
+    /**
+     * Method of create menu
+     * @param menu
+     * @return menu
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        // Change the label of the menu based on the state of the app.
+        int nightMode = AppCompatDelegate.getDefaultNightMode();
+        if(nightMode == AppCompatDelegate.MODE_NIGHT_YES){
+            menu.findItem(R.id.night_mode).setTitle(R.string.day_mode);
+        } else{
+            menu.findItem(R.id.night_mode).setTitle(R.string.night_mode);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //Check if the correct item was clicked
+        if(item.getItemId()==R.id.night_mode){
+            // Get the night mode state of the app.
+            int nightMode = AppCompatDelegate.getDefaultNightMode();
+            //Set the theme mode for the restarted activity
+            if (nightMode == AppCompatDelegate.MODE_NIGHT_YES) {
+                AppCompatDelegate.setDefaultNightMode
+                        (AppCompatDelegate.MODE_NIGHT_NO);
+            } else {
+                AppCompatDelegate.setDefaultNightMode
+                        (AppCompatDelegate.MODE_NIGHT_YES);
+            }
+        }
+        recreate();
+        // TODO: Get the night mode state of the app.
+        return true;
+    }
 
     }
 
