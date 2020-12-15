@@ -64,7 +64,7 @@ public final class MainActivity extends AppCompatActivity {
         AsyncTask.execute(() -> {
 
             //Using the contracts to get the news...
-            Contracts contracts = new ContractsImplNewsApi("...");// Debe ir supuestamente la apiKey aquí
+            Contracts contracts = new ContractsImplNewsApi("...");
 
             //Get the News from the NewsApi( Internet!)
             List<News> listNews = contracts.retrieveNews(30);
