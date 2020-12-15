@@ -41,11 +41,13 @@ public final class MainActivity extends AppCompatActivity {
      *On create.
      * @param savedInstanceState used to reload the app.
      */
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // The Toolbar
+        this.setSupportActionBar(findViewById(R.id.am_t_toolbar));
 
         //the FastAdapter
         ModelAdapter<News, NewsItem> newsAdapter = new ModelAdapter<>(NewsItem::new);
@@ -62,7 +64,7 @@ public final class MainActivity extends AppCompatActivity {
         AsyncTask.execute(() -> {
 
             //Using the contracts to get the news...
-            Contracts contracts = new ContractsImplNewsApi("...");
+            Contracts contracts = new ContractsImplNewsApi("...");// Debe ir supuestamente la apiKey aquí
 
             //Get the News from the NewsApi( Internet!)
             List<News> listNews = contracts.retrieveNews(30);
